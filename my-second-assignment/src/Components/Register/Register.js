@@ -10,7 +10,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [successful,setSuccessful] = useState(false);
 
-  const dispatch = useDispatch();
+  const dispatchRegister = useDispatch();
   const registeredUser = useSelector(state => state.register)
   console.log(registeredUser)
 
@@ -18,15 +18,15 @@ const Register = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-      const details={
+      const registeredDetails={
           firstName,
           lastName,
           email,
           password
       }
-    dispatch({
+    dispatchRegister({
         type:"USER_REGISTRATION",
-        payload:details
+        payload:registeredDetails
     })
     setSuccessful(true);
   };

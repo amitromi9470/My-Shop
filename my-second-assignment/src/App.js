@@ -5,7 +5,8 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import About from "./Components/About/About";
 import Nav from "./Nav";
 import Register from "./Components/Register/Register";
-import logo2 from "./Assets/shopping_cart.png";
+//import logo2 from "./Assets/shopping_cart.png";
+
 
 const App = () => {
   return (

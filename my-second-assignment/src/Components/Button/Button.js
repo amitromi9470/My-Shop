@@ -1,9 +1,9 @@
 import React from "react";
 
-const Button=()=>{
+const Button=(props)=>{
     return(
         <div>
-            <button>Log In</button>
+            <input type="button" onClick={props.onClickHandler} value="Log In"/>
         </div>
 
     )
