@@ -1,38 +1,47 @@
 import React, { useState } from "react";
-import {useDispatch,useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./Register.css";
-
 
 const Register = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [successful,setSuccessful] = useState(false);
+  const [successful, setSuccessful] = useState(false);
 
   const dispatchRegister = useDispatch();
-  const registeredUser = useSelector(state => state.register)
-  console.log(registeredUser)
+  const registeredUser = useSelector((state) => state.register);
+  console.log(registeredUser);
 
-  const SuccessComponent = <h1>REGISTRATION SUCCESSFUL!!!</h1>
+  const SuccessComponent = <h1>REGISTRATION SUCCESSFUL!!!</h1>;
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-      const registeredDetails={
-          firstName,
-          lastName,
-          email,
-          password
-      }
-    dispatchRegister({
-        type:"USER_REGISTRATION",
-        payload:registeredDetails
-    })
-    setSuccessful(true);
+    const registeredDetails = {
+      firstName,
+      lastName,
+      email,
+      password,
+    };
+    
+    if((firstName && lastName && email && password))
+    {
+      dispatchRegister({
+        type: "USER_REGISTRATION",
+        payload: registeredDetails,
+      });
+      setSuccessful(true);
+    }
+    else{
+      alert("Please eneter all details")
+    }
+
+    
+    
   };
 
   return !successful ? (
-    <form className="Register" >
+    <form className="Register">
       <h1>Enter FirstName</h1>
       <input
         type="text"
@@ -66,10 +75,17 @@ const Register = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <div>
-        <input type="submit" className="button2" value="Submit" onClick={onSubmitHandler}/>
+        <input
+          type="submit"
+          className="button2"
+          value="Submit"
+          onClick={onSubmitHandler}
+        />
       </div>
     </form>
-  ): SuccessComponent;
+  ) : (
+    SuccessComponent
+  );
 };
 
 export default Register;

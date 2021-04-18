@@ -1,10 +1,10 @@
 import React,{useState} from "react";
 import "./Buttonforcart.css";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const Buttonforcart = () => {
   const dispatchCart = useDispatch();
-  const cartCount=useSelector((state)=>state.cartCount)
+  //const cartCount=useSelector((state)=>state.cartCount)
 
   const [cartValue,setCartValue]=useState(0);
 
